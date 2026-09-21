@@ -79,7 +79,10 @@
               <strong id="selectedTypeLabel">未选择字模</strong>
               <span>点击字模后，在版面格子中落字，也可拖拽字模到版面。</span>
             </div>
-            <div id="shortageBadge" class="badge ok">数量充足</div>
+            <div class="badge-group">
+              <div id="lockBadge" class="badge warn">待校对</div>
+              <div id="shortageBadge" class="badge ok">数量充足</div>
+            </div>
           </div>
           <div id="stage" class="stage" aria-label="排版画布"></div>
         </section>
@@ -90,6 +93,20 @@
             <span id="placedCount"></span>
           </div>
           <div id="usageList" class="usage-list"></div>
+          <div class="divider"></div>
+          <h3>送印锁版</h3>
+          <form id="lockForm" class="lock-form">
+            <input id="copiesInput" type="number" min="1" max="9999" placeholder="印数" />
+            <input id="proofreaderInput" type="text" maxlength="12" placeholder="校对人" />
+            <button id="lockSubmitBtn" class="primary" type="submit">锁版送印</button>
+          </form>
+          <div id="lockInfo" class="lock-info"></div>
+          <div id="lockErrors" class="lock-errors"></div>
+          <div class="revision-head">
+            <h4>改版记录</h4>
+            <button id="clearRevisionsBtn" type="button">清空改版记录</button>
+          </div>
+          <div id="revisionList" class="revision-list"></div>
           <div class="divider"></div>
           <h3>已保存草稿</h3>
           <div id="draftList" class="draft-list"></div>

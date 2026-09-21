@@ -397,6 +397,113 @@ h3 {
   margin: 14px 0;
 }
 
+.badge-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge.locked {
+  background: var(--blue);
+}
+
+.lock-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.lock-form button {
+  grid-column: span 2;
+}
+
+.lock-form input:disabled,
+.lock-form button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.lock-info {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.lock-errors {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.lock-errors p {
+  margin: 0;
+  border: 1px solid var(--red);
+  border-radius: 6px;
+  background: rgba(164, 64, 55, 0.08);
+  color: var(--red);
+  font-size: 12px;
+  padding: 6px 8px;
+}
+
+.revision-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 10px 0 6px;
+}
+
+.revision-head h4 {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.revision-head button {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.revision-list {
+  display: grid;
+  gap: 6px;
+}
+
+.revision-item {
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  background: rgba(255, 253, 248, 0.7);
+  padding: 7px 8px;
+  font-size: 12px;
+}
+
+.revision-item span {
+  display: block;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.revision-hint {
+  margin: 6px 0 0;
+  color: var(--red);
+  font-size: 12px;
+}
+
+.draft-item .badge {
+  padding: 3px 8px;
+  font-size: 11px;
+}
+
+.draft-item .badge.pending {
+  background: var(--gold);
+}
+
+.panel.locked {
+  border-color: var(--blue);
+}
+
 @media (max-width: 1120px) {
   .workspace {
     grid-template-columns: 1fr;
