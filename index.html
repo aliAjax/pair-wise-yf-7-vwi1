@@ -69,6 +69,12 @@
             <select id="styleFilter">
               <option value="all">全部风格</option>
             </select>
+            <select id="wearFilter" aria-label="按成色筛选">
+              <option value="all">全部成色</option>
+              <option value="新">新</option>
+              <option value="微磨">微磨</option>
+              <option value="旧痕">旧痕</option>
+            </select>
           </div>
           <div id="typeList" class="type-list"></div>
         </aside>
@@ -79,7 +85,10 @@
               <strong id="selectedTypeLabel">未选择字模</strong>
               <span>点击字模后，在版面格子中落字，也可拖拽字模到版面。</span>
             </div>
-            <div id="shortageBadge" class="badge ok">数量充足</div>
+            <div class="status-badges">
+              <div id="lockBadge" class="badge idle">待校对</div>
+              <div id="shortageBadge" class="badge ok">数量充足</div>
+            </div>
           </div>
           <div id="stage" class="stage" aria-label="排版画布"></div>
         </section>
@@ -89,6 +98,46 @@
             <h2>草稿与核对</h2>
             <span id="placedCount"></span>
           </div>
+
+          <section class="lock-box" aria-label="送印锁版">
+            <div class="lock-head">
+              <h3>送印锁版</h3>
+              <span id="lockStatusChip" class="lock-chip proofing">待校对</span>
+            </div>
+
+            <div id="proofingView">
+              <form id="lockForm" class="lock-form">
+                <label>
+                  印数
+                  <input id="printCountInput" type="number" min="1" step="1" placeholder="例：500" inputmode="numeric" />
+                </label>
+                <label>
+                  校对人
+                  <input id="proofreaderInput" type="text" maxlength="20" placeholder="例：林师傅" />
+                </label>
+                <button class="primary" type="submit">锁版送印</button>
+              </form>
+              <ul id="lockChecklist" class="lock-checklist" aria-label="锁版条件核对"></ul>
+              <div id="lockErrors" class="lock-errors" hidden></div>
+              <div class="revision-box">
+                <div class="revision-head">
+                  <h4>改版记录</h4>
+                  <button id="clearRevisionsBtn" type="button" class="link-btn">清空记录</button>
+                </div>
+                <div id="revisionList" class="revision-list"></div>
+              </div>
+            </div>
+
+            <div id="lockedView" hidden>
+              <dl id="lockMeta" class="lock-meta"></dl>
+              <p class="lock-hint">
+                版面已锁定送印。此时调整作品设置、字模或落字，均须填写改版依据，确认后自动回到待校对；清空改版记录后才能再次锁版。
+              </p>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+          <h3>用量统计</h3>
           <div id="usageList" class="usage-list"></div>
           <div class="divider"></div>
           <h3>已保存草稿</h3>
@@ -96,6 +145,19 @@
         </aside>
       </section>
     </main>
+
+    <div id="revisionModal" class="modal-backdrop" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="revisionModalTitle">
+        <h3 id="revisionModalTitle">填写改版依据</h3>
+        <p class="modal-summary" id="revisionSummary"></p>
+        <textarea id="revisionReason" rows="3" placeholder="说明本次改版原因，例：校对发现错字，改排「风」"></textarea>
+        <p id="revisionFormHint" class="modal-hint" hidden>请先填写改版依据。</p>
+        <div class="modal-actions">
+          <button id="revisionCancelBtn" type="button">取消</button>
+          <button id="revisionConfirmBtn" class="primary" type="button">确认改版</button>
+        </div>
+      </div>
+    </div>
 
     <script src="app.js"></script>
   </body>

@@ -251,6 +251,47 @@ h3 {
   font-size: 12px;
 }
 
+.tag-row {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.wear-tag,
+.on-lock-tag,
+.draft-chip,
+.lock-chip,
+.lock-mini {
+  display: inline-block;
+  font-style: normal;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.wear-tag.wear-新 {
+  background: rgba(60, 112, 86, 0.14);
+  color: var(--green);
+}
+
+.wear-tag.wear-微磨 {
+  background: rgba(183, 134, 44, 0.16);
+  color: var(--gold);
+}
+
+.wear-tag.wear-旧痕 {
+  background: rgba(164, 64, 55, 0.14);
+  color: var(--red);
+}
+
+.on-lock-tag {
+  background: rgba(183, 134, 44, 0.16);
+  color: var(--gold);
+}
+
 .mini-btn {
   width: 32px;
   height: 32px;
@@ -295,6 +336,22 @@ h3 {
   background: var(--red);
 }
 
+.badge.idle {
+  background: var(--blue);
+}
+
+.badge.locked {
+  background: var(--gold);
+}
+
+.status-badges {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .stage {
   margin: 0 auto;
   display: grid;
@@ -308,6 +365,7 @@ h3 {
   box-shadow: inset 0 0 0 14px rgba(183, 134, 44, 0.08);
   padding: 18px;
   gap: 8px;
+  position: relative;
 }
 
 .stage.postcard {
@@ -395,6 +453,332 @@ h3 {
   height: 1px;
   background: var(--line);
   margin: 14px 0;
+}
+
+/* ---- 送印锁版 ---- */
+.lock-box {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdf8;
+  padding: 12px;
+}
+
+.lock-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.lock-head h3 {
+  margin-bottom: 0;
+}
+
+.lock-chip {
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+
+.lock-chip.proofing {
+  background: rgba(54, 95, 125, 0.14);
+  color: var(--blue);
+}
+
+.lock-chip.locked {
+  background: rgba(183, 134, 44, 0.18);
+  color: var(--gold);
+}
+
+.lock-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.lock-form label {
+  display: grid;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.lock-form button {
+  grid-column: 1 / -1;
+}
+
+.lock-checklist {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.lock-checklist li {
+  display: flex;
+  gap: 7px;
+  align-items: baseline;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.lock-checklist li span {
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 900;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.lock-checklist li.ok {
+  color: var(--green);
+}
+
+.lock-checklist li.ok span {
+  background: var(--green);
+}
+
+.lock-checklist li.bad {
+  color: var(--red);
+}
+
+.lock-checklist li.bad span {
+  background: var(--red);
+}
+
+.lock-errors {
+  margin-top: 10px;
+  border: 1px solid var(--red);
+  border-radius: 6px;
+  background: rgba(164, 64, 55, 0.08);
+  color: var(--red);
+  font-size: 12px;
+  line-height: 1.7;
+  padding: 8px 10px;
+}
+
+.revision-box {
+  margin-top: 12px;
+  border-top: 1px dashed var(--line);
+  padding-top: 10px;
+}
+
+.revision-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.revision-head h4 {
+  margin: 0;
+  font-size: 13px;
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  padding: 2px 4px;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.link-btn:hover {
+  transform: none;
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+.link-btn:disabled {
+  color: var(--line);
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.revision-list {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.revision-item {
+  border-left: 3px solid var(--gold);
+  background: rgba(183, 134, 44, 0.08);
+  border-radius: 0 6px 6px 0;
+  padding: 6px 8px;
+  display: grid;
+  gap: 2px;
+}
+
+.revision-item strong {
+  font-size: 12px;
+}
+
+.revision-reason {
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.revision-meta {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.lock-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  margin: 0 0 10px;
+  font-size: 13px;
+}
+
+.lock-meta dt {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.lock-meta dd {
+  margin: 0;
+}
+
+.lock-hint {
+  margin-bottom: 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* ---- 锁版中的版面 ---- */
+.stage-wrap {
+  position: relative;
+}
+
+.stage.locked {
+  border-color: var(--gold);
+  box-shadow:
+    inset 0 0 0 14px rgba(183, 134, 44, 0.12),
+    0 0 0 3px rgba(183, 134, 44, 0.25);
+}
+
+.stage-seal {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  z-index: 5;
+  writing-mode: vertical-rl;
+  letter-spacing: 6px;
+  padding: 10px 7px;
+  border: 3px solid currentColor;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 900;
+  background: rgba(255, 250, 241, 0.72);
+  pointer-events: none;
+  user-select: none;
+}
+
+.stage-seal.locked {
+  color: var(--red);
+}
+
+.stage-seal.proofing {
+  color: rgba(183, 134, 44, 0.55);
+  font-size: 14px;
+  letter-spacing: 4px;
+  padding: 8px 6px;
+}
+
+.usage-item .lock-mini {
+  background: rgba(183, 134, 44, 0.18);
+  color: var(--gold);
+  margin-right: 6px;
+  padding: 0 5px;
+}
+
+.usage-item .wear-tag {
+  margin-left: 4px;
+}
+
+.draft-chip {
+  justify-self: start;
+}
+
+.draft-chip.locked {
+  background: rgba(164, 64, 55, 0.12);
+  color: var(--red);
+}
+
+.draft-chip.proofing {
+  background: rgba(54, 95, 125, 0.12);
+  color: var(--blue);
+}
+
+body.is-locked .settings-bar {
+  border-color: rgba(183, 134, 44, 0.55);
+  box-shadow: var(--shadow), inset 0 0 0 2px rgba(183, 134, 44, 0.18);
+}
+
+/* ---- 改版依据弹窗 ---- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: rgba(34, 32, 28, 0.42);
+  padding: 20px;
+}
+
+.modal {
+  width: min(440px, 100%);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.modal h3 {
+  margin-bottom: 0;
+  color: var(--red);
+}
+
+.modal-summary {
+  margin-bottom: 0;
+  font-size: 13px;
+  color: var(--ink);
+  background: rgba(183, 134, 44, 0.08);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.modal textarea {
+  resize: vertical;
+  min-height: 72px;
+  font: inherit;
+}
+
+.modal-hint {
+  margin-bottom: 0;
+  color: var(--red);
+  font-size: 12px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
 @media (max-width: 1120px) {
